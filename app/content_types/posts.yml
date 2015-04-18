@@ -64,3 +64,6 @@ fields:
     label: Issue
     type: belongs_to
     class_name: issues
+- featured:
+    label: featured
+    type: boolean

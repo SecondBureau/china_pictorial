@@ -1,5 +1,13 @@
-%img.img-responsive{src:"{{ issue.cover_picture | resize: 'x200' }}"}
-{% for post in issue.posts %}
-%a{href: "/posts/{{ post._slug }}"}{{ post.title | escape }} 
-%br
-{% endfor %}
+.side-block.issue
+  %h1 {{ "magazine" | upcase }}
+  %img.pull-left.img-responsive{src:"{{ issue.cover_picture | resize: '100x' }}"}
+  .issue-subtitle {{ issue.subtitle | escape }}
+  %br
+  .subscribe Subscribe
+  .clearfix
+  
+  %ul
+    {% for post in issue.posts %}
+    %li
+      %a{href: "/posts/{{ post._slug }}"}{{ post.title | escape }} 
+    {% endfor %}

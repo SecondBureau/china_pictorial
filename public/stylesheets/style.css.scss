@@ -1,7 +1,11 @@
 /* make Open Sans the default font */
 
 body * {
-  font-family: 'aaarghnormal', sans-serif;
+  /*font-family: 'aaarghnormal', sans-serif;*/
+}
+
+body {
+  padding-top: 70px;
 }
 
 /* a nice frame for images */
@@ -106,4 +110,23 @@ body.page-index .jumbotron {
 body.page-index .jumbotron {
   padding-top: 10px;
   padding-bottom: 25%;
+}
+
+a.navbar-subscribe img {
+  margin-top: 5px;
+}
+
+/* side blocks */
+.side-block {
+  h1 {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  h2 {
+    font-size: 12px;
+    font-weight: bold;
+    
+  }
 }

@@ -23,6 +23,10 @@ fields:
     required: true
     hint: Explanatory text displayed in the back office
     localized: false
+    
+- subtitle:
+    label: Subtitle
+    type: string
 
 - published_at: # The lowercase, underscored name of the field
     label: Published at # Human readable name of the field

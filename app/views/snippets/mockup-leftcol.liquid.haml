@@ -1,0 +1,24 @@
+{% assign stories = "Key Phrases from the Government Work Report|An Inviting Voyage|Sourcing the Yellow River|Luther Knight: Flashes of Chinese History|In the Palms of Our Hands|The Ancient Town of Pingyao: A Cultural Pilgrimage|Media Encouraged to Contribute to China-India Ties" | split: "|" %}
+
+.row
+  .mockup.mockup-block.newsletter.draw
+    %h1
+      %i.flaticon-mail62
+      {{ "Subscribe to our newsletter" | upcase }}
+    %input{type: "text"}
+      %i.flaticon-plus34
+    
+%br
+%br
+
+.row
+  .mockup.mockup-block.top-stories.draw  
+    %h1 
+      %i.flaticon-megaphone4
+      {{ "top stories" | upcase }}
+    %ul
+      {% for story in stories %}
+      %li 
+        %a{href: '#'}{{ story }}
+        %span.date 15/04
+      {% endfor %}

@@ -35,44 +35,64 @@ published: true
     {% inline_editor %}
 
   %body{class: "page-{{ page.slug}}"}
-    
+  
+    / navbar
+    {% include 'navbar' %}
+  
+  
+    / Page Content
     .container
-      / Site Title
-      .row
-        .col-md-10.col-md-offset-1.col-sm-12
-          %h1 
-            %a{href: '/'}{{ site.name }}
-      / Site Navigation
-      .row
-        .col-md-12.col-sm-12
-          %nav.navbar.navbar-default{:role => "navigation"}
-            / Brand and toggle get grouped for better mobile display
-            .navbar-header
-              %button.navbar-toggle{"data-target" => "#main-nav", "data-toggle" => "collapse", :type => "button"}
-                %span.sr-only Toggle navigation
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
-            / Collect the nav links, forms, and other content for toggling
-            #main-nav.collapse.navbar-collapse
-              %ul.nav.navbar-nav
-                / %li{class: "{% if page.slug == 'index' %}class='active'{% endif %}"}
-                /   %a{:href => "/"} Home
-                {% nav "site", no_wrapper: true, active_class: "active" %}
-      / Page Content
       .row
         {% block 'main' %}
-        .col-md-2.hidden-sm.hidden-xs
-          {divers}
+        .col-md-3.hidden-sm.hidden-xs
+          {% include 'mockup-leftcol' %}
+          
         .col-md-6.col-sm-12
-          {% assign issue = contents.issues.first %}
-          {{ issue.name }}
-          <br/>
-          %img.img-responsive{src:"{{ '/samples/posts/panda_roll_call_2.jpg' | resize: '1000x' }}"}
-          Current Issue
-          %br
-          Main articles
-        .col-md-4.col-sm-12
+        
+          .row
+            .col-md-12.col-sm-12
+              {% assign issue = contents.issues.first %}
+              {% with_scope featured: true %}
+              {% for post in issue.posts %}
+              {% if post.featured %}
+              {% assign featured_post = post %}
+              {% endif %}
+              {% endfor %}
+              {% endwith_scope %}
+          
+              %h1 {{ issue.name }}
+              <br/>
+              %img.img-responsive{src:"{{ featured_post.featured_image | resize: '1000x' }}"}
+          
+              .caption
+                %h3 {{ featured_post.title | escape }}
+                .teaser {{ featured_post.teaser }}
+                %p
+                  %a.btn.btn-primary{href: "/posts/{{ featured_post._slug }}"}Read More
+          
+          .row.categories
+          
+            {% for category in contents.categories %}
+            .post-listing.col-sm-6.col-md-4
+              .thumbnail
+                xx
+    
+              .caption
+                %h3 {{ category.title | escape }}
+                %ul
+                  %li Post 1
+                  %li Post 2
+                  %li Post 3
+                %p
+                  %a.btn.btn-primary{href: "/categories/{{ category._slug }}"} More like this
+        
+            {% cycle  '', '<div class="clearfix visible-sm">&nbsp;</div>' %}
+            {% cycle '', '', '<div class="clearfix hidden-sm hidden-xs">&nbsp;</div>'  %}
+  
+            {% endfor %}
+            
+          
+        .col-md-3.col-sm-12
           {% include 'issue_block' with issue %}
         
         {% endblock %}

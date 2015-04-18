@@ -29,7 +29,7 @@ fields:
 - bio: # The lowercase, underscored name of the field
     label: Biography # Human readable name of the field
     type: text
-    required: true
+    required: false
     hint: A short story of the author
     localized: false
     

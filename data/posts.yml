@@ -6,7 +6,8 @@
     categories:
     issue: april-2015
     author: luca-martin
-    featured_image: "/samples/placeholders/640x480.png"
+    featured_image: "/samples/posts/panda_roll_call_3.jpg"
+    featured: true
     
 - Picturesque Suzhou:
     posted_at: 2015-04-01
@@ -20,6 +21,7 @@
     issue: april-2015
     author: ayokunle-nickolas
     featured_image: "/samples/posts/picturesque-suzhou-1.jpg"
+    
     
 - "Panda Diplomacy Cuddly Power":
     title: "Panda Diplomacy: Cuddly Power"
