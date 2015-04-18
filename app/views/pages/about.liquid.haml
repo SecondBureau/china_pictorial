@@ -1,32 +1,45 @@
 ---
-title: About
-
-# true if the page is included in the menu
+title: About Us
 listed: true
-
-# true if the page is published
 published: true
-
-# true if the page can be used as a layout for new pages created by the editors
 # is_layout: true
-
-# position among sibling pages
-# position: 1
-
-# sets a redirection to the given url (301)
+position: 2
 # redirect_url: "<url to a page or to a remote url>"
-
-# content type that this page is templatizing
 # content_type: "<slug of one of the content types>"
-
 # editable_elements:
 #   'some_block/some_slug': "<text>"
 #   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
 ---
+
 {% extends parent %}
 
 {% block main %}
 
-%p Hello world
+
+{% block 'featured_photo' %}
+
+{% capture caption %}
+{% editable_text "caption", format: "raw", rows: 3, hint: "Text displayed below the photo and in the ALT attribute." %}
+Issue Apr 2015
+{% endeditable_text %}
+{% endcapture %}
+
+{% capture photo %}{% editable_file 'photo' %}/samples/issues/china_pictorial_cover_201504.jpg{% endeditable_file %}{% endcapture %}
+
+{% include 'img_box' with caption, photo, size: '400x' %}
+  
+{% endblock %}
+  
+{% editable_text "about_body", rows: 20 %}
+
+%p Launched in 1950 and designed as a vehicle for presenting captivating photographs alongside informative and interesting articles,China Pictorialbecame the first comprehensive publication conceived after the founding of the People's Republic in 1949. The inceptive masthead of the magazine was inscribed by the late Chairman Mao Zedong.
+
+%p For more than 50 years, China Pictorial, in Chinese and more than a dozen foreign languages, has been devoted to covering major domestic and international events, reporting on those issues most important to the people, reflecting dramatic reforms of society and bearing full witness to the rapid development ofChina. It has been distributed throughout China, covering all provinces, municipalities, autonomous regions, and theHong Kongand Macao Special Administrative Regions, as well as more than 100 countries and regions around the world.
+
+%p Today, China Pictorial has reshaped itself and diversified its business. There are the Chinese and English edition ofChina Pictorial, the Russian and Korean edition ofChina, and the Chinese edition of Vogue– all in print, and the editions of China Pictorial at the website, http://www.rmhb.com.cn, in eight languages, including Chinese, English, French, Russian, German, Italian, Japanese, and Arabic.
+
+{% endeditable_text %}
+
+
 
 {% endblock %}

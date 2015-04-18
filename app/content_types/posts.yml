@@ -1,0 +1,66 @@
+---
+name: Posts
+description: Posts
+slug: posts
+label_field_name: title
+order_by: posted_at
+order_direction: desc
+fields:
+- title:
+    label: Title
+    type: string
+    required: true
+    unique: false
+    localized: false
+- posted_at:
+    label: Posted at
+    type: date_time
+    required: false
+    unique: false
+    localized: false
+- tags:
+    label: Tags
+    type: tags
+    required: false
+    unique: false
+    localized: false
+- teaser:
+    label: Teaser
+    type: text
+    hint: A short lead-in to the post displayed when listing posts
+    required: false
+    unique: false
+    localized: false
+    text_formatting: html
+- featured_image:
+    label: Featured image
+    type: file
+    hint: An image displayed next to the teaser when listing posts
+    required: false
+    unique: false
+    localized: false
+- body:
+    label: Body
+    type: text
+    hint: The full post text
+    required: false
+    unique: false
+    localized: false
+    text_formatting: html
+- categories:
+    label: Categories
+    type: many_to_many
+    required: false
+    unique: false
+    localized: false
+    class_name: categories
+    inverse_of: posts
+    ui_enabled: true
+- author:
+    label: Author
+    type: belongs_to
+    class_name: authors
+- issue:
+    label: Issue
+    type: belongs_to
+    class_name: issues

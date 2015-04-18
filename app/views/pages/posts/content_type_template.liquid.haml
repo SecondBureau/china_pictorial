@@ -1,0 +1,46 @@
+---
+title: Post Template
+listed: false
+published: true
+content_type: posts
+---
+
+{% extends parent %}
+
+{% block main %}
+
+.col-md-2.hidden-sm.hidden-xs
+  {divers}
+
+.col-md-7.col-sm-12
+  %article.post
+    %p.posted-at
+      %i.glyphicon.glyphicon-time
+      Posted at {{ post.posted_at | localized_date: '%-I:%M %p' }} on {{ post.posted_at | localized_date: '%B, %-d %Y' }}
+
+    {% if post.tags %}
+    %p.tags
+      %i.glyphicon.glyphicon-tags
+      {% for tag in post.tags %}
+      %span.label.label-primary {{ tag | escape }}
+      {% endfor %}
+    {% endif %}
+  
+    {% if post.categories.size > 0 %}
+    %p.categories
+      %i.glyphicon.glyphicon-tags
+      {% for category in post.categories %}
+      %span.label.label-primary 
+        %a{href: "/categories/{{ category._slug }}"}{{ category.title | escape }}
+      {% endfor %}
+    {% endif %}
+  
+    .body
+      {{ post.body }}
+
+.col-md-3.col-sm-12
+  {% include 'issue_block' with issue: post.issue %}
+
+{% endblock %}
+
+        

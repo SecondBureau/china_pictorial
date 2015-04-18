@@ -1,0 +1,37 @@
+---
+title: Content type template
+listed: true
+published: true
+content_type: categories
+
+# is_layout: true
+# position: 1
+# redirect_url: "<url to a page or to a remote url>"
+# editable_elements:
+#   'some_block/some_slug': "<text>"
+#   'some_block/some_slug': "<relative path to the file under the public/samples folder>"
+---
+{% extends parent %}
+
+{% block main %}
+
+.row.posts
+  {% for post in category.posts %}
+  .post-listing.col-sm-6.col-md-4
+    .thumbnail
+      {% if post.featured_image.url %}
+      %img{src: "{{ post.featured_image.url | resize: '400x200#' }}", alt: "{{ post.title | escape }}"}
+      {% endif %}
+    
+    .caption
+      %h3 {{ post.title | escape }}
+      .teaser {{ post.teaser }}
+      %p
+        %a{href: "/posts/{{ post._slug }}", class:"btn btn-primary"}Read More
+        
+  {% cycle  '', '<div class="clearfix visible-sm">&nbsp;</div>' %}
+  {% cycle '', '', '<div class="clearfix hidden-sm hidden-xs">&nbsp;</div>'  %}
+  
+  {% endfor %}
+
+{% endblock %}

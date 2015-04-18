@@ -1,0 +1,32 @@
+---
+title: Posts
+published: true
+listed: true
+position: 1
+---
+
+
+{% extends parent %}
+
+{% block main %}
+
+.row.posts
+  {% for post in contents.posts %}
+  .post-listing.col-sm-6.col-md-4
+    .thumbnail
+      {% if post.featured_image.url %}
+      %img{src: "{{ post.featured_image.url | resize: '400x200#' }}", alt: "{{ post.title | escape }}"}
+      {% endif %}
+    
+    .caption
+      %h3 {{ post.title | escape }}
+      .teaser {{ post.teaser }}
+      %p
+        %a.btn.btn-primary{href: "/posts/{{ post._slug }}"}Read More
+        
+  {% cycle  '', '<div class="clearfix visible-sm">&nbsp;</div>' %}
+  {% cycle '', '', '<div class="clearfix hidden-sm hidden-xs">&nbsp;</div>'  %}
+  
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,5 @@
+%img.img-responsive{src:"{{ issue.cover_picture | resize: 'x200' }}"}
+{% for post in issue.posts %}
+%a{href: "/posts/{{ post._slug }}"}{{ post.title | escape }} 
+%br
+{% endfor %}

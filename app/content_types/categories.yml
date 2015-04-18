@@ -1,0 +1,27 @@
+---
+name: Categories
+description: Post categories
+slug: categories
+label_field_name: title
+order_by: title
+order_direction: asc
+fields:
+- title:
+    label: required
+    type: string
+    hint: Explanatory text displayed in the back office
+    required: true
+    unique: false
+    localized: false
+- posts:
+    label: Posts
+    type: many_to_many
+    hint: Explanatory text displayed in the back office
+    required: false
+    unique: false
+    localized: false
+    class_name: posts
+    inverse_of: categories
+    order_by:
+    - posted_at
+    - desc

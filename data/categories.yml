@@ -1,0 +1,27 @@
+- Books:
+    _slug: books
+    posts: []
+- Culture:
+    _slug: culture
+    posts: []
+- Ecology:
+    _slug: ecology
+    posts: []
+- Exhibitions:
+    _slug: exhibitions
+    posts: []
+- Images:
+    _slug: images
+    posts:
+    - panda-roll-call
+    - quis-nostrum
+- People:
+    _slug: people
+    posts:
+    - quis-nostrum
+- Pictures:
+    _slug: picture
+    posts: []
+- Society:
+    _slug: society
+    posts: []

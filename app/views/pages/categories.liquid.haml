@@ -1,0 +1,21 @@
+---
+title: Categories
+listed: true
+published: true
+# is_layout: true
+# position: 1
+# redirect_url: "<url to a page or to a remote url>"
+# content_type: "<slug of one of the content types>"
+---
+{% extends parent %}
+
+{% block main %}
+
+.categories
+  {% for category in contents.categories %}
+  .post-listing
+    %p 
+      %a{href: "/categories/{{ category._slug }}"}{{ category.title }}
+  {% endfor %}
+
+{% endblock %}

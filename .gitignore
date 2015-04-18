@@ -2,3 +2,4 @@
 /config/deploy.yml
 /log
 .DS_STORE
+.sass-cache
